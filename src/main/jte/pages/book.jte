@@ -126,7 +126,7 @@
 
         <!-- Search Form -->
         <div class="search-box">
-            <form action="/book" method="get">
+            <form action="/book" method="post">
                 <input type="text" name="search" placeholder="Search by book name..." value="${searchTerm}" style="padding: 10px; font-size: 16px; width: 300px;">
 
 <%--                <button type="submit">--%>

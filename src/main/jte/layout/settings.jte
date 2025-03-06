@@ -55,8 +55,8 @@
     <h1><a href="/"> ALL PUBLISHER</a></h1>
     <div>
         <a href="/settings">Settings</a>
-        <a href="/aboutus">About Us</a>
-        <a href="/contactus">Contact Us</a>
+<%--        <a href="/aboutus">About Us</a>--%>
+<%--        <a href="/contactus">Contact Us</a>--%>
     </div>
 </header>
 <div class="container">

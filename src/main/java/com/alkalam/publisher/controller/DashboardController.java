@@ -12,6 +12,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
@@ -39,6 +40,23 @@ public class DashboardController {
     }
 
     @GetMapping("/book")
+    public String bookPage(Model model) {
+        // Add dynamic data to the model
+        List<Company> allCompany = companyService.findAll();
+        model.addAttribute("companies", allCompany);
+        model.addAttribute("companyId", 0);
+
+        model.addAttribute("bookList", List.of());
+        model.addAttribute("currentPage", 0);
+        model.addAttribute("totalPages", 0);
+        model.addAttribute("totalItems", 0L);
+        model.addAttribute("size", 0);
+        model.addAttribute("searchTerm", "");
+
+        return "pages/book";
+    }
+
+    @PostMapping("/book")
     public String bookPage(@RequestParam(defaultValue = "0") int page,
                              @RequestParam(defaultValue = "10") int size,
                             @RequestParam(required = false) String search,
@@ -48,7 +66,7 @@ public class DashboardController {
         Pageable pageable = PageRequest.of(page, size);
         Page<Book> bookPage;
         if (search != null && !search.isEmpty()) {
-            if(companyId==null){
+            if(companyId==null || companyId==0){
             //bookPage = companyService.findByBookTitleEnContainingIgnoreCase(search, pageable); // Search by name
             bookPage = companyService.findByBookTitleArContainingIgnoreCase(search, pageable); // Search by name
         } else {
@@ -57,7 +75,7 @@ public class DashboardController {
 
         }
         else {
-            if(companyId==null){
+            if(companyId==null || companyId==0){
             bookPage = companyService.findAllPageBook(pageable); // Fetch all books
             }else {
                 bookPage = companyService.findByBookCompanyId(companyId,pageable);

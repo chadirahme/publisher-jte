@@ -54,14 +54,14 @@
     <h1><a href="/"> ALL PUBLISHER</a></h1>
     <div>
         <a href="/settings">Settings</a>
-        <a href="/aboutus">About Us</a>
-        <a href="/contactus">Contact Us</a>
+<%--        <a href="/aboutus">About Us</a>--%>
+<%--        <a href="/contactus">Contact Us</a>--%>
     </div>
 </header>
 <div class="container">
     <nav>
         <a href="/dashboard">Dashboard</a>
-        <a href="/reports">Reports</a>
+<%--        <a href="/reports">Reports</a>--%>
         <a href="/settings">Settings</a>
     </nav>
     <main>
